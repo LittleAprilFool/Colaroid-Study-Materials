@@ -1,48 +1,49 @@
 "use strict";
 
 // Save DOM objects to variables
-const poles = document.querySelectorAll('.pole');
-const pole1 = document.querySelector('#pole-1');
-const pole2 = document.querySelector('#pole-2');
-const gameArea = document.querySelector('#game-area');
+const poles = document.querySelectorAll(".pole");
+const gameArea = document.querySelector("#game-area");
 const containerWidth = gameArea.clientWidth;
 const containerHeight = gameArea.clientHeight;
-const restartBtn = document.querySelector('#restart-btn');
+const restartBtn = document.querySelector("#restart-btn");
 
 // make some variables accesible to functions.
 const speed = 2;
-const playing = true;
+let animationReq;
+
 
 function startGame() {
-    gameLoop();
-}
-
-function resetPoles() {
-    poles.forEach((pole) => {
-        pole.style.right = 0;
-    });
+  reset();
+  gameLoop();
 }
 
 function updatePoles() {
-    // Move poles
-    let polesCurrentPos = parseFloat(window.getComputedStyle(poles[0]).getPropertyValue("right"));
+  // Move poles
+  let polesCurrentPos = parseFloat(
+    window.getComputedStyle(poles[0]).getPropertyValue("right")
+  );
 
-    poles.forEach((pole) => {
-        pole.style.right = `${polesCurrentPos + speed}px`;
-    });
+  poles.forEach((pole) => {
+    pole.style.right = `${polesCurrentPos + speed}px`;
+  });
 }
 
 function update() {
-    updatePoles();
+  updatePoles();
 }
 
 function gameLoop() {
-    update();
-    if (playing) {
-        requestAnimationFrame(gameLoop);
-    }
+  update();
+  animationReq = requestAnimationFrame(gameLoop);
 }
 
-restartBtn.addEventListener('click', resetPoles);
+function reset() {
+  poles.forEach((pole) => {
+    pole.style.right = 0;
+  });
+  if (animationReq) {
+    cancelAnimationFrame(animationReq);
+  }
+}
 
-startGame();
+restartBtn.addEventListener('click', startGame);
