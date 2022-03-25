@@ -1,0 +1,63 @@
+#game {
+  text-align: center;
+}
+
+#game-area {
+  margin: auto;
+  position: relative;
+  width: 600px;
+  height: 300px;
+  border: 2px solid green;
+  background: url("https://thumbs.gfycat.com/PlayfulWeeklyGuppy-mobile.jpg");
+  overflow: hidden;
+}
+
+#dinosaur {
+  position: absolute;
+  background: url("https://googledino.ru/assets/googe_dino.png");
+  height: 50px;
+  width: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  bottom: 90px;
+  left: 15%;
+}
+
+.tree {
+  position: absolute;
+  bottom: 90px;
+  background: url("https://www.tynker.com/projects/images/e20df433a4316a7c308b11da2fcdb32d432598f4/cacti---cacti2.png");
+  background-size: 100%;
+}
+
+#tree-1 {
+  width: 20px;
+  height: 30px;
+  right: 0;
+}
+
+#tree-2 {
+  width: 15px;
+  height: 20px;
+  right: -40%;
+}
+
+#game-info {
+  margin: 5px;
+  font-size: 18px;
+}
+
+#game-info p {
+  display: inline;
+  padding: 20px;
+}
+
+#restart-btn {
+  padding: 5px 10px;
+  background-color: green;
+  color: white;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
