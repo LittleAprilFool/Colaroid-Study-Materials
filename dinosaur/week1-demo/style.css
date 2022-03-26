@@ -27,7 +27,7 @@
   position: absolute;
   bottom: 90px;
   background: url("https://www.tynker.com/projects/images/e20df433a4316a7c308b11da2fcdb32d432598f4/cacti---cacti2.png");
-  background-size: 100%;
+  background-size: contain;
 }
 
 #tree-1 {
