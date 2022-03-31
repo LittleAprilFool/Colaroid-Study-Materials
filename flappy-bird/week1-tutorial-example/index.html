@@ -1,0 +1,382 @@
+<html><head><style>body {
+  font: 400 16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #111;
+  background-color: #fdfdfd;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern" 1;
+  -o-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
+  padding: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    padding: 5px;
+  }
+
+  body > #content {
+    padding: 0px 20px 20px 20px !important;
+  }
+}
+
+body > #content {
+  margin: 0px;
+  max-width: 900px;
+  border: 1px solid #e1e4e8;
+  padding: 10px 40px;
+  padding-bottom: 20px;
+  border-radius: 2px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+hr {
+  color: #bbb;
+  background-color: #bbb;
+  height: 1px;
+  flex: 0 1 auto;
+  margin: 1em 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+ * Links
+ */
+a {
+  color: #0366d6;
+  text-decoration: none; }
+  a:visited {
+    color: #0366d6; }
+  a:hover {
+    color: #0366d6;
+    text-decoration: underline; }
+
+pre {
+  background-color: #f6f8fa;
+  border-radius: 3px;
+  font-size: 85%;
+  line-height: 1.45;
+  overflow: auto;
+  padding: 16px;
+}
+
+/**
+  * Code blocks
+  */
+
+code {
+  background-color: rgba(27,31,35,.05);
+  border-radius: 3px;
+  font-size: 85%;
+  margin: 0;
+  word-wrap: break-word;
+  padding: .2em .4em;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+}
+
+pre > code {
+  background-color: transparent;
+  border: 0;
+  display: inline;
+  line-height: inherit;
+  margin: 0;
+  overflow: visible;
+  padding: 0;
+  word-wrap: normal;
+  font-size: 100%;
+}
+
+
+/**
+ * Blockquotes
+ */
+blockquote {
+  margin-left: 30px;
+  margin-top: 0px;
+  margin-bottom: 16px;
+  border-left-width: 3px;
+  padding: 0 1em;
+  color: #828282;
+  border-left: 4px solid #e8e8e8;
+  padding-left: 15px;
+  font-size: 18px;
+  letter-spacing: -1px;
+  font-style: italic;
+}
+blockquote * {
+  font-style: normal !important;
+  letter-spacing: 0;
+  color: #6a737d !important;
+}
+
+/**
+ * Tables
+ */
+table {
+  border-spacing: 2px;
+  display: block;
+  font-size: 14px;
+  overflow: auto;
+  width: 100%;
+  margin-bottom: 16px;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+th {
+  font-weight: 600;
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+/**
+ * Others
+ */
+
+img {
+  max-width: 100%;
+}
+
+p {
+  line-height: 24px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #24292e; }
+
+ul {
+  margin-top: 0; }
+
+li {
+  color: #24292e;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5; }
+
+li + li {
+  margin-top: 0.25em; }
+
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: #24292e; }
+
+a:visited {
+  color: #0366d6; }
+
+h1, h2, h3 {
+  border-bottom: 1px solid #eaecef;
+  color: #111;
+  /* Darker */ }</style></head><body><h1 id="colaroid-flappy-bird-tutorial-part-1">Colaroid Flappy Bird Tutorial Part 1</h1>
+<h1 id="flappy-bird-part-1">Flappy Bird Part 1</h1>
+<h2 id="overview-of-the-game">Overview of the Game</h2>
+<blockquote>
+<p>Flappy Bird is the most popular game on the Internet these days. It is a simple one-button game in which you have to navigate our beloved bird past the obstacles.
+You do this by clicking your mouse repeatedly. Each time you click, the bird flies up. Don&#39;t make it fly too high or it will die. This means you have to tap at the right moments to make the bird go as far as you can!</p>
+</blockquote>
+<h2 id="overview-of-the-tutorial">Overview of the Tutorial</h2>
+<p>This tutorial consists two parts. In the first part, we will create the game area with moving poles.
+By the end of the tutorial, you will learn:</p>
+<ul>
+<li>place elements and game layouts in HTML5 games</li>
+<li>style elements in HTMl5 games</li>
+<li>control element&#39;s layout and style dynamically through JavaScript</li>
+<li>create animations in HTML5 games<h2 id="step-1-starter-code">Step 1. Starter Code</h2>
+</li>
+</ul>
+<p>Let&#39;s first create an HTML5 starter template with an H1 element containing the title of the game.</p>
+<p><strong>The HTML Code</strong></p>
+<pre><code><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"X-UA-Compatible"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"IE=edge"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Flappy Bird<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Flappy Bird<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre><h2 id="step-2-create-basic-layout-of-the-game">Step 2. Create Basic Layout of the Game</h2>
+<p>In this step, we divided the page into three parts --- the game title and instructions area; the game area; and the game info area which contains a restart button.
+We use basic CSS styling to make the elements centered in the middle. We also add a background color to the game area.</p>
+<p><strong>The HTML Code</strong></p>
+<pre><code>&lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">id</span>=<span class="hljs-string">"game"</span>&gt;
+  &lt;h1&gt;Flappy Bird&lt;/h1&gt;
+  &lt;p <span class="hljs-built_in">id</span>=<span class="hljs-string">"instructions"</span>&gt;
+    Click/tap <span class="hljs-keyword">on</span> <span class="hljs-keyword">the</span> game <span class="hljs-keyword">to</span> make <span class="hljs-keyword">the</span> bird fly.&lt;br /&gt;
+    Avoid poles <span class="hljs-keyword">and</span> boundaries. Enjoy!
+  &lt;/p&gt;
+  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">id</span>=<span class="hljs-string">"game-area"</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;
+  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">id</span>=<span class="hljs-string">"game-info"</span>&gt;
+    &lt;button <span class="hljs-built_in">id</span>=<span class="hljs-string">"restart-btn"</span>&gt;Restart&lt;/button&gt;
+  &lt;/<span class="hljs-keyword">div</span>&gt;
+&lt;/<span class="hljs-keyword">div</span>&gt;
+</code></pre><p><strong>Implement the Style</strong></p>
+<pre><code><span class="hljs-selector-id">#game</span> {
+  <span class="hljs-attribute">text-align</span>: center;
+}
+<span class="hljs-selector-id">#game-info</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">5px</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">18px</span>;
+}
+<span class="hljs-selector-id">#game-info</span> <span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">display</span>: inline;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;
+}
+<span class="hljs-selector-id">#restart-btn</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">5px</span> <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">background-color</span>: green;
+  <span class="hljs-attribute">color</span>: white;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">18px</span>;
+  <span class="hljs-attribute">border</span>: none;
+  <span class="hljs-attribute">cursor</span>: pointer;
+  <span class="hljs-attribute">outline</span>: none;
+}
+<span class="hljs-selector-id">#game-area</span> {
+  <span class="hljs-attribute">margin</span>: auto;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">400px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">300px</span>;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid green;
+  <span class="hljs-attribute">background-color</span>: deepskyblue;
+}
+</code></pre><p><strong>Preview of This Step</strong></p>
+<p><img src="https://paper-attachments.dropbox.com/s_CFA4FB72B5B1746149FEDE41E775B156AA2CA4B1CB1143C19BA1781914E5F16E_1648733526540_image.png" alt=""></p>
+<h2 id="step-3-position-the-bird-and-poles">Step 3. Position the Bird and Poles</h2>
+<p>Next, we create a div as bird and two poles inside the game-area div. We use the CSS attribute <code>background</code> to set the background of the bird div to be an image. We then use the CSS attribute <code>background-size:contain</code> to make the background image scale as large as possible within its container without cropping or stretching the image. If the container is larger than the image, this will result in image tiling. Thus we use the CSS attribute <code>background-repeat:no-repeat</code> to prevent image tiling.</p>
+<pre><code><span class="hljs-selector-id">#bird</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"https://usercontent.one/wp/compucademy.net/wp-content/uploads/2020/11/robbybird.png?media=1647780690"</span>);
+  <span class="hljs-attribute">background-size</span>: contain;
+  <span class="hljs-attribute">background-repeat</span>: no-repeat;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">27px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">42px</span>;
+}
+</code></pre><p>In this step, we also work on the positioning of the game area. A page element with <strong>relative positioning</strong> gives you the control to <strong>absolutely position</strong> children elements inside of it. If you are interested to learn more, you can read <a href="https://css-tricks.com/absolute-positioning-inside-relative-positioning/">this article</a>.</p>
+<p>We use <code>position:absolute</code> on the bird and poles, so that they are positioned relative to the positioned ancestor --- which is currently the body. We then set the game-area to <code>position:relative</code> so that the position of the birds are relative to the game-area. We then use <code>top</code>, <code>left</code> to define the position of the bird and the poles.</p>
+<pre><code><span class="hljs-selector-id">#game-area</span> {
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">overflow</span>: hidden;
+}
+
+<span class="hljs-selector-id">#bird</span> {
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">20%</span>;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">15%</span>;
+}
+</code></pre><p><strong>Preview of This Step</strong></p>
+<p><img src="https://paper-attachments.dropbox.com/s_CFA4FB72B5B1746149FEDE41E775B156AA2CA4B1CB1143C19BA1781914E5F16E_1648733700232_image.png" alt=""></p>
+<h2 id="step-4-implement-the-button-clicking-behavior">Step 4. Implement the Button Clicking Behavior</h2>
+<p>Next, let&#39;s insert <code>index.js</code> which controls the behavior of the game. We will add an event listener to the restart button. We are not doing anything inside the <code>startGame</code> function right now.</p>
+<pre><code><span class="hljs-keyword">const</span> restartBtn = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#restart-btn"</span>);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">startGame</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// do something here</span>
+}
+restartBtn.addEventListener(<span class="hljs-string">'click'</span>, startGame);
+</code></pre><h2 id="step-5-move-the-poles">Step 5. Move the Poles</h2>
+<p>In this step, we will program the animation of the poles. We use the function <a href="https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame"><code>Window.requestAnimationFrame()</code></a>. This method tells the browser that you wish to perform an animation and requests that the browser calls a specified function to update an animation before the next repaint.
+Here, for every repaint, we are updating the position of the poles by moving them by 2 pixel per frame.</p>
+<pre><code><span class="hljs-keyword">const</span> speed = <span class="hljs-number">2</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">startGame</span>(<span class="hljs-params"></span>) </span>{
+  gameLoop();
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gameLoop</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">// Move poles</span>
+  <span class="hljs-keyword">let</span> polesCurrentPos = <span class="hljs-built_in">parseFloat</span>(
+    <span class="hljs-built_in">window</span>.getComputedStyle(poles[<span class="hljs-number">0</span>]).getPropertyValue(<span class="hljs-string">"right"</span>)
+  );
+  poles.forEach(<span class="hljs-function">(<span class="hljs-params">pole</span>) =&gt;</span> {
+    pole.style.right = <span class="hljs-string">`<span class="hljs-subst">${polesCurrentPos + speed}</span>px`</span>;
+  });
+  requestAnimationFrame(gameLoop);
+}
+</code></pre><p><strong>Preview of This Step</strong></p>
+<p><img src="https://paper-attachments.dropbox.com/s_CFA4FB72B5B1746149FEDE41E775B156AA2CA4B1CB1143C19BA1781914E5F16E_1648734123618_step5.gif" alt=""></p>
+<h2 id="step-6-clean-the-code">Step 6. Clean the Code</h2>
+<p>In this step, let&#39;s clean our code for a bit. We will create a new function called <code>updatePoles()</code> that takes the moving action. We do this because in the future, we may add new functions to update the bird in the repainting process.</p>
+<pre><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updatePoles</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">// Move poles</span>
+  <span class="hljs-keyword">let</span> polesCurrentPos = <span class="hljs-built_in">parseFloat</span>(
+    <span class="hljs-built_in">window</span>.getComputedStyle(poles[<span class="hljs-number">0</span>]).getPropertyValue(<span class="hljs-string">"right"</span>)
+  );
+  poles.forEach(<span class="hljs-function">(<span class="hljs-params">pole</span>) =&gt;</span> {
+    pole.style.right = <span class="hljs-string">`<span class="hljs-subst">${polesCurrentPos + speed}</span>px`</span>;
+  });
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update</span>(<span class="hljs-params"></span>) </span>{
+  updatePoles();
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gameLoop</span>(<span class="hljs-params"></span>) </span>{
+  update(); 
+  requestAnimationFrame(gameLoop);
+}
+</code></pre><h2 id="step-7-the-restart-logic">Step 7. The Restart Logic</h2>
+<p>In this step, we will implement the restart logic. In previous step, if we click on the restart button multiple times, the position of the poles will not be reset. In addition, we will start multiple repainting process if we don&#39;t cancel an ongoing process in the restart logic.
+We cancel the previous repainting process by using the <code>window.cancelAnimationFrame()</code> API.</p>
+<pre><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gameLoop</span>(<span class="hljs-params"></span>) </span>{
+  update();
+  animationReq = requestAnimationFrame(gameLoop);
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reset</span>(<span class="hljs-params"></span>) </span>{
+  poles.forEach(<span class="hljs-function">(<span class="hljs-params">pole</span>) =&gt;</span> {
+    pole.style.right = <span class="hljs-number">0</span>;
+  });
+  <span class="hljs-keyword">if</span> (animationReq) {
+    cancelAnimationFrame(animationReq);
+  }
+}
+</code></pre><p><strong>Preview of This Step</strong></p>
+<p><img src="https://paper-attachments.dropbox.com/s_CFA4FB72B5B1746149FEDE41E775B156AA2CA4B1CB1143C19BA1781914E5F16E_1648734305581_step7.gif" alt=""></p>
+<h2 id="step-8-make-the-poles-looping">Step 8. Make the Poles Looping</h2>
+<p>Alright, so far we have implemented the restart button that will move the two poles to the left of the game area. But the poles disappear after moving to the left. What we want is to generate new poles after the old poles disappear.
+Thus, we will update the position of the poles again to the right of the screen to make it &quot;looping&quot;.</p>
+<pre><code><span class="hljs-keyword">const</span> gameArea = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#game-area"</span>);
+<span class="hljs-keyword">const</span> containerWidth = gameArea.clientWidth;
+<span class="hljs-keyword">const</span> containerHeight = gameArea.clientHeight;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updatePoles</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">// Move poles</span>
+  <span class="hljs-keyword">let</span> polesCurrentPos = <span class="hljs-built_in">parseFloat</span>(
+    <span class="hljs-built_in">window</span>.getComputedStyle(poles[<span class="hljs-number">0</span>]).getPropertyValue(<span class="hljs-string">"right"</span>)
+  );
+  <span class="hljs-comment">//  Check whether the poles went putside of game area.</span>
+  <span class="hljs-keyword">if</span> (polesCurrentPos &gt; containerWidth) {
+    <span class="hljs-comment">// Move poles back to the right-hand side of game area.</span>
+    polesCurrentPos = <span class="hljs-number">0</span>; <span class="hljs-comment">// This is based on the "right" property.</span>
+  }
+  poles.forEach(<span class="hljs-function">(<span class="hljs-params">pole</span>) =&gt;</span> {
+    pole.style.right = <span class="hljs-string">`<span class="hljs-subst">${polesCurrentPos + speed}</span>px`</span>;
+  });
+}
+</code></pre><p><strong>Preview of This Step</strong></p>
+<p><img src="https://paper-attachments.dropbox.com/s_CFA4FB72B5B1746149FEDE41E775B156AA2CA4B1CB1143C19BA1781914E5F16E_1648734483630_step8.gif" alt=""></p>
+<h2 id="step-9-randomize-the-new-poles-height">Step 9. Randomize the New Poles&#39; Height</h2>
+<p>Lastly, let&#39;s randomize the new poles&#39; height but keeps the gap consistent in between.  To do so, we use <code>parseInt(Math.random() * 100)</code> to generate a random integer between 0 and 100. We use this value to tweak the height of the two poles.</p>
+<pre><code><span class="hljs-comment">//  Check whether the poles went putside of game area.</span>
+<span class="hljs-keyword">if</span> (polesCurrentPos &gt; containerWidth) {
+  <span class="hljs-comment">// Generate new poles.</span>
+  <span class="hljs-keyword">let</span> newHeight = <span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100</span>);
+  <span class="hljs-comment">// Change the poles' height</span>
+  poles[<span class="hljs-number">0</span>].style.height = <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-number">100</span> + newHeight}</span>px`</span>;
+  poles[<span class="hljs-number">1</span>].style.height = <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-number">100</span> - newHeight}</span>px`</span>;
+  <span class="hljs-comment">// Move poles back to the right-hand side of game area.</span>
+  polesCurrentPos = <span class="hljs-number">0</span>; <span class="hljs-comment">// This is based on the "right" property.</span>
+}
+</code></pre><p><strong>Preview of This Step</strong></p>
+<p><img src="https://paper-attachments.dropbox.com/s_CFA4FB72B5B1746149FEDE41E775B156AA2CA4B1CB1143C19BA1781914E5F16E_1648734644501_step9.gif" alt=""></p>
+</body></html>
