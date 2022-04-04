@@ -1,13 +1,12 @@
 "use strict";
 
 // Save DOM objects to variables
-const trees = document.querySelectorAll(".tree");
+const tree = document.querySelector("#tree");
 const dinosaur = document.querySelector("#dinosaur");
 const gameArea = document.querySelector("#game-area");
 const scoreSpan = document.querySelector("#score");
 const speedSpan = document.querySelector("#speed");
 const containerWidth = gameArea.clientWidth;
-const containerHeight = gameArea.clientHeight;
 const restartBtn = document.querySelector("#restart-btn");
 
 // make some variables accesible to functions.
@@ -21,45 +20,29 @@ let scoreUpdated;
 let jumpMaxHeight = 200;
 let dinosaurSpeed = 3;
 let isDrop;
-let nextTree;
 
 function startGame() {
   reset();
   gameLoop();
 }
 
-function updateTrees() {
+function updateTree() {
   // Move poles
-  let tree1CurrentPos = parseFloat(
-    window.getComputedStyle(trees[0]).getPropertyValue("right")
+  let treeCurrentPos = parseFloat(
+    window.getComputedStyle(tree).getPropertyValue("right")
   );
 
-  let tree2CurrentPos = parseFloat(
-    window.getComputedStyle(trees[1]).getPropertyValue("right")
-  );
+  if (treeCurrentPos > containerWidth) {
+    // reset tree's right
+    treeCurrentPos = 0;
 
-  nextTree = tree1CurrentPos < tree2CurrentPos ? trees[1] : trees[0];
-  let nextCurrentPos =
-    tree1CurrentPos < tree2CurrentPos ? tree2CurrentPos : tree1CurrentPos;
-  //  Check whether the trees went putside of game area.
-  if (nextCurrentPos > containerWidth) {
-    // Generate new poles.
-    let newRight = `-${100 + parseInt(Math.random() * 200)}px`;
-    // Change the next tree's right
-    nextTree.style.right = newRight;
     // randomize height
-    nextTree.style.height = `${20 + parseInt(Math.random() * 20)}px`;
-
+    tree.style.height = `${20 + parseInt(Math.random() * 20)}px`;
     // randomize width
-    nextTree.style.width = `${10 + parseInt(Math.random() * 10)}px`;
+    tree.style.width = `${10 + parseInt(Math.random() * 10)}px`;
   }
 
-  trees.forEach((tree) => {
-    let treePos = parseFloat(
-      window.getComputedStyle(tree).getPropertyValue("right")
-    );
-    tree.style.right = `${treePos + speed}px`;
-  });
+  tree.style.right = `${treeCurrentPos + speed}px`;
 }
 
 function updateDinosaur() {
@@ -93,7 +76,7 @@ function updateDinosaur() {
 }
 
 function detectGameOver() {
-  if (collision(dinosaur, nextTree)) {
+  if (collision(dinosaur, tree)) {
     gameOver();
   }
 }
@@ -104,7 +87,7 @@ function gameOver() {
 }
 
 function update() {
-  updateTrees();
+  updateTree();
   updateDinosaur();
   detectGameOver();
   updateScore();
@@ -135,12 +118,12 @@ function reset() {
   scoreSpan.textContent = score;
   scoreUpdated = true;
   // randomize position
-  trees[0].style.right = `0`;
-  trees[1].style.right = `-${250 + parseInt(Math.random() * 100)}px`;
-  // randomize height 20-40
-  trees[1].style.height = `${20 + parseInt(Math.random() * 20)}px`;
-  // randomize width 10-20
-  trees[1].style.width = `${10 + parseInt(Math.random() * 10)}px`;
+  tree.style.right = `0`;
+  // randomize height
+  tree.style.height = `${20 + parseInt(Math.random() * 20)}px`;
+
+  // randomize width
+  tree.style.width = `${10 + parseInt(Math.random() * 10)}px`;
   dinosaur.style.bottom = `${bottomLine}px`;
 
   if (animationReq) {
